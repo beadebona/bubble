@@ -11,6 +11,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from './style/theme';
 import { AuthProvider } from './providers/auth';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
@@ -19,7 +20,7 @@ root.render(
           <CartProvider>
             <ThemeProvider theme={ theme }>
               <App />
-            </ThemeProvider>             
+            </ThemeProvider>
           </CartProvider>
         </CatalogueProvider>
       </AuthProvider>
