@@ -5,7 +5,7 @@ export const InputStyled = styled.div`
     align-items: center;
     /* flex-direction: column; */
     border-bottom: 2px solid var(--primary-focus);
-    width: 100%;
+    /* width: 100%; */
     height: 32px;
     margin: 5px;
     padding: 0 5px;
@@ -18,7 +18,7 @@ export const InputStyled = styled.div`
     input{
         background: none;
         /* position: absolute; */
-        padding: 0 25px;
+        padding: 0 5px;
         border: none;
         height: 30px;
         outline: none;
@@ -34,7 +34,7 @@ export const InputStyled = styled.div`
         top: 3px;
         transition: 0.8s;
         top: ${(props)=>props.valid? "-15px": "3px"  };
-        left: ${(props)=>props.valid? "5px": "25px"};
+        left: 5px;
         font-size: ${(props)=>props.valid? "12px": "16px"};
         cursor: ${(props)=>props.autoComplete? "not-allowed": "auto"  } ;
     }
