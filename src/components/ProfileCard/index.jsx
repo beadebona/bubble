@@ -1,9 +1,10 @@
-import { Button } from "@mui/material"
+// import { Button } from "@mui/material"
 import { useAuth } from "../../providers/auth"
 import { CardContend } from "./style"
 
 export const ProfileCard = () =>{
-    const {user, orders} = useAuth()
+    const {user, myOrders, token, updateOrders} = useAuth()
+    updateOrders(token)
 
     return(
         <CardContend>
@@ -15,9 +16,9 @@ export const ProfileCard = () =>{
             {/* <Button>Editar</Button> */}
             <h4>Meus Pedidos</h4>
             <ul>{
-                !!orders?
+                myOrders.length > 0?
                 (
-                    orders.map(order=>{
+                    myOrders.map(order=>{
                         return (
                         <li key={order.id}>
                             <p>Id: {order.id}</p>
@@ -27,7 +28,7 @@ export const ProfileCard = () =>{
                         )
                     })
                 ):(
-                <>Você ainda não tem pedidos em andamento</>
+                <p>Você ainda não tem pedidos em andamento</p>
                 )}
                 
             </ul>

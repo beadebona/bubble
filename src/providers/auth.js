@@ -8,15 +8,17 @@ export const AuthProvider = ({ children}) =>{
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("@bubble:user"))||{});
     const [token, setToken] = useState(localStorage.getItem("@bubble:token")||"");
     const [authenticated, setAuthenticated] = useState(false)
-    const [orders, setOrders] = useState()
-    
+    const [orders, setOrders] = useState([])
+
     const updateOrders = (num) =>{
         API.get(`orders`, {
             headers:{
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${num}`
             }  
-        }).then(response =>setOrders(response.data)) 
+        }).then(response =>{
+            setOrders(response.data)
+        }) 
     }
 
     useEffect(()=>{
@@ -48,6 +50,9 @@ export const AuthProvider = ({ children}) =>{
         setAuthenticated(false)
     };
 
+    const myOrders = orders.filter(order => order.user.id === user.id)   
+    
+
     return(
         <AuthContext.Provider
         value={{
@@ -56,7 +61,9 @@ export const AuthProvider = ({ children}) =>{
             access, 
             LogOff, 
             authenticated,
-            orders
+            orders,
+            myOrders,
+            updateOrders,
         }}
         >
             {children}
