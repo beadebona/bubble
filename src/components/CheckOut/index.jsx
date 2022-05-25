@@ -17,9 +17,13 @@ const CheckOut = () => {
         status: "Pedido Confirmado"
     }
 
+    const redirect = ()=>{
+        history.push("/profile")
+    }
+
     const handleCheckOut =(order) =>{
         if(authenticated){
-            checkOut(order)
+            checkOut(order, redirect)
         } else {
             history.push("/login")
         }

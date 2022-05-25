@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback } from 'react';
+import { toast } from 'react-toastify';
 import { API } from '../services';
 import { useAuth } from './auth';
 
@@ -43,7 +44,7 @@ export const CartProvider = ({ children }) => {
   );
 
   const {token} = useAuth()
-  const checkOut = (data) => {
+  const checkOut = (data, callback) => {
     API.post("orders", data, {
       headers:{
         'Content-Type': 'application/json',
@@ -51,6 +52,8 @@ export const CartProvider = ({ children }) => {
       }
     }).then(_=>{
       cleanCart()
+      toast("Pedido concluído com sucesso!")
+      callback()
     })
   }
 
