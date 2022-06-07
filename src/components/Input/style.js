@@ -12,7 +12,7 @@ export const InputStyled = styled.div`
     margin-top: 18px;
     position: relative;
     transition: 0.8s;
-    cursor: ${(props)=>props.autoComplete? "not-allowed": "auto"  } ;
+    /* cursor: ${(props)=>props.autoComplete? "not-allowed": "auto"  } ; */
     box-sizing: border-box;
 
     input{
@@ -25,7 +25,7 @@ export const InputStyled = styled.div`
         width: 80%;
         font-size: 16px;
         color: var(--primary);
-        cursor: ${(props)=>props.autoComplete? "not-allowed": "auto"  } ;
+        /* cursor: ${(props)=>props.autoComplete? "not-allowed": "auto"  } ; */
     }
     label{
         color: var(--primary-focus);
@@ -36,7 +36,7 @@ export const InputStyled = styled.div`
         top: ${(props)=>props.valid? "-15px": "3px"  };
         left: 5px;
         font-size: ${(props)=>props.valid? "12px": "16px"};
-        cursor: ${(props)=>props.autoComplete? "not-allowed": "auto"  } ;
+        /* cursor: ${(props)=>props.autoComplete? "not-allowed": "auto"  } ; */
     }
 
     &:hover, &:focus-within{

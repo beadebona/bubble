@@ -11,6 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useCatalogue } from "../../providers/catalogue";
 import { useAuth } from "../../providers/auth";
 import { useHistory } from "react-router-dom";
+import { useOrders } from "../../providers/orders";
 
 export const SignUpForm = () =>{
 
@@ -23,6 +24,7 @@ export const SignUpForm = () =>{
     const [state, setstate] = useState("")
 
     const {access } = useAuth()
+    const {updateOrders} = useOrders()
 
  
     const setInfostreet = (cep) =>{
@@ -60,7 +62,8 @@ export const SignUpForm = () =>{
     } = useForm({
         resolver: yupResolver(schema)
     })
-    const redirect = () =>{
+    const redirect = async () =>{
+      await updateOrders()
       history.push("/profile")
     }
     const submit = (data) => {
@@ -104,6 +107,7 @@ export const SignUpForm = () =>{
                 label="Endereço"
                 icon={SignpostIcon}
                 value = {street}
+                callback= {setstreet}
                 autoComplete = "true"
                 register={register}
                 />
@@ -118,6 +122,7 @@ export const SignUpForm = () =>{
             label="Bairro"
             icon={SignpostIcon}
             value = {district}
+            callback={setdistrict}
             autoComplete = "true"
             register={register}
             />

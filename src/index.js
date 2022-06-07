@@ -10,6 +10,7 @@ import { CartProvider } from './providers/cart';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './style/theme';
 import { AuthProvider } from './providers/auth';
+import { OrderProvider } from './providers/orders';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,9 +19,11 @@ root.render(
       <AuthProvider>
         <CatalogueProvider>
           <CartProvider>
+            <OrderProvider>
             <ThemeProvider theme={ theme }>
               <App />
             </ThemeProvider>
+            </OrderProvider>
           </CartProvider>
         </CatalogueProvider>
       </AuthProvider>

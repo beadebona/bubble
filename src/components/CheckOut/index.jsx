@@ -4,10 +4,12 @@ import { useCart } from "../../providers/cart";
 import { useAuth } from "../../providers/auth";
 import Container from "./style";
 import { useHistory } from "react-router-dom";
+import { useOrders } from "../../providers/orders";
 
 const CheckOut = () => {
     const {cart, cartQuantity, cartReducer, checkOut} = useCart();
     const { user, authenticated } = useAuth();
+    const { updateOrders } = useOrders()
     const history = useHistory()
 
     const order = {
@@ -17,8 +19,9 @@ const CheckOut = () => {
         status: "Pedido Confirmado"
     }
 
-    const redirect = ()=>{
-        history.push("/profile")
+    const redirect = async ()=>{
+        await updateOrders()
+        return history.push("/profile")
     }
 
     const handleCheckOut =(order) =>{

@@ -54,7 +54,7 @@ export const CartProvider = ({ children }) => {
       cleanCart()
       toast("Pedido concluído com sucesso!")
       callback()
-    })
+    }).catch(err=>console.log(err))
   }
 
   const reduceQuantity = useCallback(

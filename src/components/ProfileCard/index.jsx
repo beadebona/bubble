@@ -1,10 +1,11 @@
 // import { Button } from "@mui/material"
 import { useAuth } from "../../providers/auth"
+import { useOrders } from "../../providers/orders"
 import { CardContend } from "./style"
 
 export const ProfileCard = () =>{
-    const {user, myOrders, token, updateOrders} = useAuth()
-    updateOrders(token)
+    const {user} = useAuth()
+    const {myOrders} = useOrders()
 
     return(
         <CardContend>

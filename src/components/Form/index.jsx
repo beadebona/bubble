@@ -2,13 +2,17 @@ import { Button } from "@mui/material"
 import { useForm } from "react-hook-form"
 import { useHistory } from "react-router-dom"
 import { useAuth } from "../../providers/auth"
+import { useOrders } from "../../providers/orders"
 import { Input } from "../Input"
 import StyledForm from "./style"
 export const Form = () =>{
   const { register, handleSubmit } = useForm()
   const history = useHistory()
   const { access } = useAuth()
-  const redirect = () =>{
+  const {updateOrders} = useOrders()
+  
+  const redirect = async () =>{
+    await updateOrders()
     history.push("/profile")
   }
   const onSubmit = (data) =>{
